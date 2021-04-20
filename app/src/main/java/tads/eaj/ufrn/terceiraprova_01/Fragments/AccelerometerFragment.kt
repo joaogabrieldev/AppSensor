@@ -23,6 +23,7 @@ class AccelerometerFragment : Fragment(), SensorEventListener {
 
     lateinit var binding: FragmentAccelerometerBinding
     private lateinit var sensorManager: SensorManager
+    var sensor: Sensor? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_accelerometer, container, false)
@@ -34,10 +35,8 @@ class AccelerometerFragment : Fragment(), SensorEventListener {
     }
 
     private fun setUpSensorStuff() {
-        // Create the sensor manager
         sensorManager = activity?.getSystemService(SENSOR_SERVICE) as SensorManager
 
-        // Specify the sensor you want to listen to
         sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)?.also { accelerometer ->
             sensorManager.registerListener(
                 this,
@@ -48,18 +47,15 @@ class AccelerometerFragment : Fragment(), SensorEventListener {
         }
     }
 
+
     override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {
         return
     }
 
     override fun onSensorChanged(event: SensorEvent?) {
         if (event?.sensor?.type == Sensor.TYPE_ACCELEROMETER) {
-            //Log.d("Main", "onSensorChanged: sides ${event.values[0]} front/back ${event.values[1]} ")
 
-            // Sides = Tilting phone left(10) and right(-10)
             val sides = event.values[0]
-
-            // Up/Down = Tilting phone up(10), flat (0), upside-down(-10)
             val upDown = event.values[1]
 
             binding.tvSquare.apply {
@@ -70,12 +66,22 @@ class AccelerometerFragment : Fragment(), SensorEventListener {
                 translationY = upDown * 10
             }
 
-            // Changes the colour of the square if it's completely flat
-            val color = if (upDown.toInt() == 0 && sides.toInt() == 0) Color.BLUE else Color.WHITE
+            val color = if (upDown.toInt() == 0 && sides.toInt() == 0) Color.rgb(24,255,255) else Color.WHITE
             binding.tvSquare.setBackgroundColor(color)
-            binding.tvSquare.text = "up/down ${upDown.toInt()}\nleft/right ${sides.toInt()}"
+
+            binding.tvSquare.text = "Subir/Descer: ${upDown.toInt()}\nEsquerda/Direita ${sides.toInt()}"
 
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        sensorManager.registerListener(this, sensor, SensorManager.SENSOR_DELAY_FASTEST);
+    }
+
+    override fun onPause() {
+        super.onPause()
+        sensorManager.unregisterListener(this);
     }
 
 

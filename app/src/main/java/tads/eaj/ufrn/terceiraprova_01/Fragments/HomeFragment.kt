@@ -24,11 +24,11 @@ class HomeFragment : Fragment() {
         }
 
         binding.buttonProximity.setOnClickListener {
-
+            Navigation.findNavController(it).navigate(HomeFragmentDirections.actionHomeFragmentToProximityFragment())
         }
 
         binding.ButtonAccelerometer.setOnClickListener {
-
+            Navigation.findNavController(it).navigate(HomeFragmentDirections.actionHomeFragmentToAccelerometerFragment())
         }
 
         binding.buttonGyroscope.setOnClickListener {
