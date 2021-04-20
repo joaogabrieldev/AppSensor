@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/navigation"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
     app:startDestination="@id/homeFragment">
 
     <fragment
         android:id="@+id/homeFragment"
         android:name="tads.eaj.ufrn.terceiraprova_01.Fragments.HomeFragment"
-        android:label="Home">
+        android:label="Home"
+        tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_homeFragment_to_lightFragment"
             app:destination="@id/lightFragment" />
@@ -16,11 +19,15 @@
         <action
             android:id="@+id/action_homeFragment_to_proximityFragment"
             app:destination="@id/proximityFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_gyroscopeFragment"
+            app:destination="@id/gyroscopeFragment" />
     </fragment>
     <fragment
         android:id="@+id/lightFragment"
         android:name="tads.eaj.ufrn.terceiraprova_01.Fragments.LightFragment"
-        android:label="Sensor Light">
+        android:label="Sensor Light"
+        tools:layout="@layout/fragment_light">>
         <action
             android:id="@+id/action_lightFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
@@ -28,7 +35,8 @@
     <fragment
         android:id="@+id/accelerometerFragment"
         android:name="tads.eaj.ufrn.terceiraprova_01.Fragments.AccelerometerFragment"
-        android:label="Sensor Accelerometer">
+        android:label="Sensor Accelerometer"
+        tools:layout="@layout/fragment_accelerometer">
         <action
             android:id="@+id/action_accelerometerFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
@@ -36,9 +44,19 @@
     <fragment
         android:id="@+id/proximityFragment"
         android:name="tads.eaj.ufrn.terceiraprova_01.Fragments.ProximityFragment"
-        android:label="ProximityFragment" >
+        android:label="Sensor Proximity"
+        tools:layout="@layout/fragment_proximity">
         <action
             android:id="@+id/action_proximityFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/gyroscopeFragment"
+        android:name="tads.eaj.ufrn.terceiraprova_01.Fragments.GyroscopeFragment"
+        android:label="Sensor Gyroscope"
+        tools:layout="@layout/fragment_gyroscope">
+        <action
+            android:id="@+id/action_gyroscopeFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
     </fragment>
 </navigation>

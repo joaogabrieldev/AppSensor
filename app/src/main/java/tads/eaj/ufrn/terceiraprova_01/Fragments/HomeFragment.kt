@@ -32,7 +32,7 @@ class HomeFragment : Fragment() {
         }
 
         binding.buttonGyroscope.setOnClickListener {
-
+            Navigation.findNavController(it).navigate(HomeFragmentDirections.actionHomeFragmentToGyroscopeFragment())
         }
 
         setHasOptionsMenu(true);
