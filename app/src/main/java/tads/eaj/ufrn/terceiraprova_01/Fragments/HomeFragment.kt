@@ -23,6 +23,18 @@ class HomeFragment : Fragment() {
           Navigation.findNavController(it).navigate(HomeFragmentDirections.actionHomeFragmentToLightFragment())
         }
 
+        binding.buttonProximity.setOnClickListener {
+
+        }
+
+        binding.ButtonAccelerometer.setOnClickListener {
+
+        }
+
+        binding.buttonGyroscope.setOnClickListener {
+
+        }
+
         setHasOptionsMenu(true);
         return binding.root
     }

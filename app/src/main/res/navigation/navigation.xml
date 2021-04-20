@@ -10,6 +10,9 @@
         <action
             android:id="@+id/action_homeFragment_to_lightFragment"
             app:destination="@id/lightFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_accelerometerFragment"
+            app:destination="@id/accelerometerFragment" />
     </fragment>
     <fragment
         android:id="@+id/lightFragment"
@@ -17,6 +20,14 @@
         android:label="Sensor Light">
         <action
             android:id="@+id/action_lightFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/accelerometerFragment"
+        android:name="tads.eaj.ufrn.terceiraprova_01.Fragments.AccelerometerFragment"
+        android:label="AccelerometerFragment" >
+        <action
+            android:id="@+id/action_accelerometerFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
     </fragment>
 </navigation>
