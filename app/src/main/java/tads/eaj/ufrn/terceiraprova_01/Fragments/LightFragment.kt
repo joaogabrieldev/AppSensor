@@ -49,11 +49,11 @@ class LightFragment : Fragment(), SensorEventListener {
 
     private fun brightness(light: Float): String {
         return when (light.toInt()) {
-            0 -> "Não há luz"
-            in 1..60 -> "Pouco iluminado"
+            0 -> "Sem luz"
+            in 1..60 -> "Pouca luz"
             in 61..5000 -> "Normal"
-            in 5001..25000 -> "Muito iluminado"
-            else -> "Você vai ficar cego de tanta luz"
+            in 5001..25000 -> "Muita luz"
+            else -> "Muita Muita Muita Luz"
         }
     }
 
